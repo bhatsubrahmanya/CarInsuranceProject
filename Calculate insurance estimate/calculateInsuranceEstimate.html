@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarInsurance</title>
+    <link rel="stylesheet" href="calculateInsuranceEstimate.css">
+   
+</head>
+<body>
+    <div class="container">
+        <!--Login form for user which is redirecting to home after succesful validation-->
+          <form  class="InsuranceEstimateForm" >
+            <div class="Brand" >
+
+             <div class="cargroup">
+                <label for="Brand">Select your car's brand</label>
+                <select id="userBrand" name="userBrand" onchange="populate(this.id,'Model')">
+                   <option value="">---Choose Brand---</option>
+                   <option value="Maruti Suzuki">Maruti Suzuki</option>
+                   <option value="TATA Motors">TATA Motors</option>
+                   <option value="Hyundai">Hyundai</option>
+                   <option value="Toyota">Toyota</option>
+                </select>
+             </div>
+
+            <br>
+
+             <div class="cargroup">
+                <label for="Model"> Select your car's model</label>
+                <select id="Model" name="Model" onchange="populate1(this.id,'Variant')">
+                    <option value="">---Select Model---</option>
+                </select>
+
+             </div>
+            </div>
+
+            <br>
+
+             <div>
+               <label for="Variant">Select Variant</label>
+               <select id="Variant" name="Variant">
+                <option value="">--Select Variant </option>
+               </select>
+              </div>
+              <br>
+
+              <div>
+                <label for="FuelType">Select Fuel Type</label>
+                <select  id="FuelType" name="FuelType">
+                       <option value>---Select---</option>
+                       <option value="Petrol">Petrol</option>
+                       <option value="Diesel">Diesel</option>
+                       <option value="CNG">CNG</option>
+                </select>
+               </div>
+               <br>
+
+               <div>
+                <label for="RegisteredCity"> In Which RTO is your car registered in?</label>
+                <input list="Cities" id="RegisteredCity" name="RegisteredCity">
+                <datalist id="Cities">
+                        <option value="KA01">
+                          <option value="KA02">
+                            <option value="KA03">
+                               <option value="KA04">
+                                 <option value="KA05">
+                                    <option value="KA06">
+                                       <option value="KA07">
+                                           <option value="KA08">
+                                              <option value="KA09">
+                                              <option value="KA10">
+                                              <option value="KA11">
+                                           <option value="KA12">
+                                       <option value="KA13">
+                                    <option value="KA14">
+                                <option value="KA15">
+                            <option value="KA16">
+                        <option value="KA17">
+                        <option value="KA18">
+                            <option value="KA19">
+                                <option value="KA20">
+                                   <option value="KA21">
+                                      <option value="KA22">
+                                         <option value="KA23">
+                                            <option value="KA24">
+                                               <option value="KA25">
+                                               <option value="KA26">
+                                             <option value="KA27">
+                                           <option value="KA28">
+                                        <option value="KA29">
+                                   <option value="KA30">
+                                <option value="KA31">
+                              <option value="KA32">
+                           <option value="KA33">
+                        <option value="KA34">
+                            <option value="KA35">
+                                <option value="KA36">
+                                    <option value="KA37">
+                                       <option value="KA38">
+                                          <option value="KA39">
+                                             <option value="KA40">
+                                                <option value="KA41">
+                                                   <option value="KA42">
+                                                      <option value="KA43">
+                                                    <option value="KA44">
+                                                <option value="KA45">
+                                            <option value="KA46">
+                                        <option value="KA47">
+                                    <option value="KA48">
+                                <option value="KA49">
+                                    <option value="KA50">
+                                        <option value="KA51">
+                                           <option value="KA52">
+                                              <option value="KA53">
+                                                 <option value="KA54">
+                                                    <option value="KA55">
+                                                <option value="KA56">
+                                        <option value="KA58">
+                                 <option value="KA60">
+                                      <option value="KA61">
+                                             <option value="KA63">
+                                                <option value="KA64">
+                                                     <option value="KA65">
+                                                       <option value="KA66">
+                                                   <option value="KA67">
+                                                 <option value="KA68">
+                                              <option value="KA69">
+                                          <option value="KA70">
+                </datalist>
+               </div>
+               <br>
+
+               <div>
+                <label for="PurchaseDate">When did you buy your car?</label>
+                <input list="Years" id="PurchaseDate" name="PurchaseDate" placeholder="Year">
+                <datalist id="Years">
+                    <option value="2023">
+                        <option value="2022">
+                            <option value="2021">
+                                <option value="2020">
+                                    <option value="2019">
+                                <option value="2018">
+                            <option value="2017">
+                         <option value="2016">
+                     <option value="2015">
+                    <option value="2014">
+                         <option value="2013">
+                            <option value="2012">
+                                 <option value="2011">
+                                     <option value="2010">
+                                        <option value="2009">
+                                            <option value="2008">
+                  </datalist>
+               </div>
+               <br>
+             
+          </form>
+          <script>
+            function populate(userBrand,Model){
+                var s1=document.getElementById(userBrand);
+                var s2=document.getElementById(Model);
+
+                s2.innerHTML="";
+
+                if(s1.value=="Maruti Suzuki"){
+                    var optionArray=['swift|Swift','alto 800|Alto 800','dzire|Dzire','wagonR|WagonR'];
+                }
+                else if(s1.value=="TATA Motors"){
+                    var optionArray=['indica|Indica','safari|Safari'];
+                }
+                else if(s1.value=="Hyundai"){
+                    var optionArray=['grand i10|Grand i10','Venue|venue'];
+                }
+                else if(s1.value=="Toyota"){
+                    var optionArray=['inova|Inova'];
+                }
+                for(var option in optionArray){
+                    var pair=optionArray[option].split("|");
+                    var newoption=document.createElement("option");
+                
+                    newoption.value=pair[0];
+                    newoption.innerHTML=pair[1];
+                    s2.options.add(newoption);
+            }
+        }
+        function populate1(Model,Variant){
+                var s1=document.getElementById(Model);
+                var s2=document.getElementById(Variant);
+
+                s2.innerHTML="";
+
+                if(s1.value=="Swift" || s1.value=="swift"){
+                    var optionArray=['vxi|VXI','zxi|ZXI'];
+                }
+                else if(s1.value=="alto 800" || s1.value=="Alto 800"){
+                    var optionArray=['lxi|LXI','lxi opt|LXI OPT'];
+                }
+                else if(s1.value=="dzire" || s1.value=="Dzire"){
+                    var optionArray=['amt vdi|AMT VDI','amt zdi|AMT ZDI'];
+                }
+                else if(s1.value=="indica" || s1.value=="Indica"){
+                    var optionArray=['dle|DLE','dl|DL'];
+                }
+                else if(s1.value=="safari" || s1.value=="Safari"){
+                    var optionArray=['dicor 2.2 ex|DICOR 2.2 EX','dicor 2.2 gx|DICOR 2.2 GX'];
+                }
+                else if(s1.value=="grand i10" || s1.value=="Grand i10"){
+                    var optionArray=['kappa lpg|Kappa LPG'];
+                }
+                else if(s1.value=="venue" || s1.value=="Venue"){
+                    var optionArray=['s+|S+','s|S'];
+                }
+                else if(s1.value=="inova"  || s1.value=="Inova"){
+                    var optionArray=['2.0 g3|2.0 G3','2.0 g2|2.0 G2'];
+                }
+                else if(s1.value=="wagonR" || s1.value=="WagonR"){
+                    var optionArray=['ax|AX','lxi|LXI'];
+                }
+                for(var option in optionArray){
+                    var pair=optionArray[option].split("|");;
+                    var newoption=document.createElement("option");
+                
+                    newoption.value=pair[0];
+                    newoption.innerHTML=pair[1];
+                    s2.options.add(newoption);
+            }
+        }
+          </script>
+     </div> 
+</body>
+</html>
